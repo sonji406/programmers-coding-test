@@ -1,12 +1,10 @@
 function solution(numbers, direction) {
-    let answer = [];
+    let answer = [...numbers];
     
-    if (direction==='right') {
-        answer.push(numbers.pop());
-        answer = answer.concat(numbers);
+    if (direction === 'right') {
+        answer.unshift(answer.pop());
     } else {
-        answer.push(numbers.shift());
-        answer = numbers.concat(answer);
+        answer.push(answer.shift());
     }
     
     return answer;

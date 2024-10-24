@@ -11,11 +11,13 @@ rl.on('line', function (line) {
     input.push(line);
 }).on('close', function () {
     const stringArr = input[1].split('');
-    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    const M = 1234567891;
+    let pow31 = 1;
     let result = 0;
 
     for (let i = 0; i < stringArr.length; i++) {
-        result += (alphabet.indexOf(stringArr[i]) + 1) * Math.pow(31, i);
+        result = (result + (stringArr[i].charCodeAt(0) - 96) * pow31) % M;
+        pow31 = (pow31 * 31) % M;
     }
 
     console.log(result);
